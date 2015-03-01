@@ -23,11 +23,12 @@ $( document ).ready(function() {
 		thumbDiv.innerHTML = picHTML;
 	};
 
+	//hide the categories that aren't supposed to show up and put the first image in the first category in the view window
 	var intialSetup = function() {
 		$('#category2').addClass('hidden');
 		$('#category3').addClass('hidden');
 		$('#category4').addClass('hidden');
-		$('<img src="http://russ.php.cs.dixie.edu/gardens/medium/viva01.jpg">').appendTo('#mainSlider');
+		$('<img src="http://russ.php.cs.dixie.edu/gardens/medium/viva01.jpg" id="sliderImage">').appendTo('#mainSlider');
 	};
 
 	var setThumbClickHandlers = function() {
@@ -36,11 +37,17 @@ $( document ).ready(function() {
 				// alert("an image has been touched!");
 				var picURL = $(event.target).attr('src').split("/").pop();
 				newPicURL = baseurl + 'medium/' + picURL;
-				console.log(newPicURL);
+				// console.log(newPicURL);
 				
-				// not working need to fix this!
-				// $('#mainSlider:first-child').attr('src', newPicURL);
+				//set the height of the div to the height of the picture
+				$('#mainSlider').attr('min-height', $('#mainSlider').height());
+				// console.log('Height ' + $picHeight);
+				$('#sliderImage').fadeTo('800', '.1', function() {
+							$('#sliderImage').attr('src', newPicURL);
+						});
+				$('#sliderImage').fadeTo('800', '1');
 
+				
 			};
 		});
 

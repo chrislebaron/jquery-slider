@@ -115,26 +115,33 @@ $( document ).ready(function() {
 
 	var switchButtons = function () {
 		$('#right-arrow').click(function () {
-			if (currentImageIndexNum < currentCategory.length - 1 ){
+			switchRight();
+		});
+
+		$('#left-arrow').click(function () {
+			switchLeft();
+		});		
+	};
+
+	var switchRight = function() {
+		if (currentImageIndexNum < currentCategory.length - 1 ){
 				currentImageIndexNum += 1;
 			} else {
 				currentImageIndexNum = 0;	
 			};
-			var newImageURL = baseurl + piclist[currentCategoryNum][currentImageIndexNum][0];
-			switchPic(newImageURL);
-			
-		});
+		var newImageURL = baseurl + piclist[currentCategoryNum][currentImageIndexNum][0];
+		switchPic(newImageURL);
+	};
 
-		$('#left-arrow').click(function () {
-			if (currentImageIndexNum > 0){
+	var switchLeft = function() {
+		if (currentImageIndexNum > 0){
 				currentImageIndexNum -= 1;
 			} else {
 				currentImageIndexNum = currentCategory.length - 1;
 			};
-			var newImageURL = baseurl + piclist[currentCategoryNum][currentImageIndexNum][0];
-			switchPic(newImageURL);
-		});		
-	}
+		var newImageURL = baseurl + piclist[currentCategoryNum][currentImageIndexNum][0];
+		switchPic(newImageURL);
+	};
 
 	var switchPic = function (url) {
 		var cat_index = currentCategory - 1;
@@ -146,7 +153,9 @@ $( document ).ready(function() {
 
 	}
 
-
+	window.setInterval(function(){
+	  switchRight();
+	}, 5000);
 
 
 	placeThumbs();

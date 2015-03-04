@@ -7,12 +7,35 @@
 }
 
 #mainSlider {
-	/*max-width: 1024px;*/
-	width: 100%;
+	max-width: 1024px;
+	/*width: 100%;*/
 	background: #000;
 	/*max-width:1024px;*/
 	max-height:50%;
+	position:relative;
+}
 
+#right-arrow {
+	z-index: 100;
+	position:absolute;
+	top: 40%;
+	right:0;
+	opacity:.5;
+}
+
+#right-arrow:hover {
+	opacity:1;
+}
+
+#left-arrow {
+	z-index: 100;
+	position: absolute;
+	top: 40%;
+	opacity:.5;
+}
+
+#left-arrow:hover {
+	opacity:1;
 }
 
 #sliderImage {
